@@ -3,4 +3,4 @@ A function ```def pascal_triangle (n):``` that returns a list of lists of intege
 + Returns an empty list if ```n <= 0```
 + ```n``` is assumed to be an integer.
 
-[0-main.py](https://github.com/Yosef-S-A/alx-interview/0x00-pascal_triangle/test) is the code used to test.
+[0-main.py](https://github.com/Yosef-S-A/alx-interview/blob/main/0x00-pascal_triangle/test/0-main.py) is the code used to test.
