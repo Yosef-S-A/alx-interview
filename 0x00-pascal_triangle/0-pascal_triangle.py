@@ -12,7 +12,11 @@ def pascal_triangle (n):
     if n <= 0:
         return triangle
     else:
-        for i in range (n):
-            j = 11 ** i
-            triangle.append(list(str(j)))
+        for i in range(1,n+1):
+            C = 1
+            tmp = []
+            for j in range(1, i+1):
+                tmp.append(C)
+                C = C * (i - j) // j
+            triangle.append(tmp)
     return triangle
