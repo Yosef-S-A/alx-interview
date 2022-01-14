@@ -4,7 +4,8 @@
 The function a list of integers representing the Pascal's triangle of n
 """
 
-def pascal_triangle (n):
+
+def pascal_triangle(n):
     """
     Calculate pascal triangle
     """
@@ -12,7 +13,7 @@ def pascal_triangle (n):
     if n <= 0:
         return triangle
     else:
-        for i in range(1,n+1):
+        for i in range(1, n+1):
             C = 1
             tmp = []
             for j in range(1, i+1):
