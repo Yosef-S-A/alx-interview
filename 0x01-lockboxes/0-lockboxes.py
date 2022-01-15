@@ -20,8 +20,8 @@ def canUnlockAll(boxes):
     box_state[0] = True
     for i in range(num_box):
         for j in range(len(boxes[i])):
-            if boxes[i][j] != i and box_state[boxes[i][j]] not False:
-                box_state[boxes[i][j]] = True
+            if boxes[i][j] != i and box_state[i] is False:
+                box_state[i] = True
     if False in box_state:
         return False
     else:
