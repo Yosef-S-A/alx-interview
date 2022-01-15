@@ -1,7 +1,13 @@
 #!/usr/bin/python3
 
 """
-The function a list of integers representing the Pascal's triangle of n
+Calculates integers representing the Pascal's triangle of n
+
+Args:
+    n (int): number of lines in a Pascal's triangle
+    
+Returns:
+    list: a list of lists of integers representing the Pascal’s triangle of n
 """
 
 
