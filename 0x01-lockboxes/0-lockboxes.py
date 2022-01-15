@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 """ a function that checks if all the boxes can be opened
 Parameters
 ----------
