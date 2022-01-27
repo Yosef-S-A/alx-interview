@@ -6,18 +6,15 @@ Change comes from within
 
 def makeChange(coins, total):
     '''
-    calculate the the fewest number of coins needed to meet 
+    calculate the the fewest number of coins needed to meet
     a given amount total
-
     Parameters
     ----------
-    coins : list 
+    coins : list
     total : int
-
     Returns
     _______
     int: number of coins
-
     '''
     if total <= 0:
         return 0
