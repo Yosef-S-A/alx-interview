@@ -18,7 +18,7 @@ def print_log(size, codes):
     -------
     None
     '''
-    print("File size: {}".format(size))`
+    print("File size: {}".format(size))
     for k, v in codes.items():
         if k and v:
             print("{}: {}".format(k, v))
