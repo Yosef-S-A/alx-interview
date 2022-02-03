@@ -6,19 +6,19 @@ from re import search as grep
 
 
 def print_log(size, codes):
-    ''' 
+    '''
     Prints computed metrics
-    
+
     Parameters
     ----------
     size : int
     code : list
-    
-    Return
+
+    Returns
     -------
     None
     '''
-    print("File size: {}".format(size)
+    print("File size: {}".format(size))`
     for k, v in codes.items():
         if k and v:
             print("{}: {}".format(k, v))
