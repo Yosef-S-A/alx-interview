@@ -3,6 +3,7 @@
 0. Minimum Operations
 """
 
+
 def minOperations(n):
     d = n // 2
     while d > 0:
