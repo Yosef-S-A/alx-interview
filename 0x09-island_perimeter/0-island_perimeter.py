@@ -5,14 +5,12 @@
 
 
 def island_perimeter(grid):
-    """ 
+    """
     Function to find the perimeter of an island
-
     Parameters
     ----------
-    grid : list 
+    grid : list
       list of list of integers 0 represents water and 1 represents
-
     Returns
     -------
       perimeter of the island described in grid
