@@ -1,11 +1,11 @@
 #!/usr/bin/python3
-"""Log parsing module"""
+'''log parser algorithm'''
 
 
 import sys
 
 
-records = {
+mydict = {
     "200": 0,
     "301": 0,
     "400": 0,
@@ -13,26 +13,25 @@ records = {
     "403": 0,
     "404": 0,
     "405": 0,
-    "500": 0
-    }
+    "500": 0}
 file_size = 0
 try:
-    for time, line in enumerate(sys.stdin, 1):
-        token = line.split()
-        if len(token) > 2:
-            status_code = token[len(token) - 2]
-            file_size += int(token[len(token) - 1])
-            if status_code in records:
-                records[str(status_code)] += 1
-        if time % 10 == 0:
+    for n, line in enumerate(sys.stdin, 1):
+        _line = line.split()
+        if len(_line) > 2:
+            status_code = _line[len(_line) - 2]
+            file_size += int(_line[len(_line) - 1])
+            if status_code in mydict:
+                mydict[str(status_code)] += 1
+        if n % 10 == 0:
             print("File size: {}".format(file_size))
-            for sc in sorted(records):
-                if records[sc] > 0:
-                    print("{}: {}".format(sc, records[sc]))
+            for k in sorted(mydict):
+                if mydict[k] > 0:
+                    print("{}: {}".format(k, mydict[k]))
 except KeyboardInterrupt:
     pass
 finally:
-    print("File size: {}".format(file_size))
-    for sc in sorted(records):
-        if records[sc] > 0:
-            print("{}: {}".format(sc, records[sc]))
+    print('File size: {}'.format(file_size))
+    for k in sorted(mydict):
+        if mydict[k] > 0:
+            print("{}: {}".format(k, mydict[k]))
