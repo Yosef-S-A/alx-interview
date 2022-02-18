@@ -1,45 +1,47 @@
 #!/usr/bin/python3
 '''log parser algorithm'''
 
+if __name__ == '__main__':
 
-from sys import stdin
+    import sys
 
+    def print_results(statusCodes, fileSize):
+        """ Print statistics """
+        print("File size: {:d}".format(fileSize))
+        for statusCode, times in sorted(statusCodes.items()):
+            if times:
+                print("{:s}: {:d}".format(statusCode, times))
 
-mydict = {
-    "200": 0,
-    "301": 0,
-    "400": 0,
-    "401": 0,
-    "403": 0,
-    "404": 0,
-    "405": 0,
-    "500": 0}
-file = 0
+    statusCodes = {"200": 0,
+                   "301": 0,
+                   "400": 0,
+                   "401": 0,
+                   "403": 0,
+                   "404": 0,
+                   "405": 0,
+                   "500": 0
+                   }
+    fileSize = 0
+    n_lines = 0
 
-
-def print_log():
-    """Prints the logs"""
-    print("File size: {}".format(file))
-    for stat in sorted(status_codes.keys()):
-        if status_codes[stat]:
-            print("{}: {}".format(stat, status_codes[stat]))
-
-
-if __name__ == "__main__":
-    count = 1
     try:
-        for line in stdin:
+        """ Read stdin line by line """
+        for line in sys.stdin:
+            if n_lines != 0 and n_lines % 10 == 0:
+                """ After every 10 lines, print from the beginning """
+                print_results(statusCodes, fileSize)
+            n_lines += 1
+            data = line.split()
             try:
-                log = line.split()
-                if log[-2] in status_codes:
-                    status_codes[log[-2]] += 1
-                file += int(log[-1])
-            except Exception:
+                """ Compute metrics """
+                statusCode = data[-2]
+                if statusCode in statusCodes:
+                    statusCodes[statusCode] += 1
+                fileSize += int(data[-1])
+            except:
                 pass
-            if count % 10 == 0:
-                print_log()
-            count += 1
+        print_results(statusCodes, fileSize)
     except KeyboardInterrupt:
-        print_log()
+        """ Keyboard interruption, print from the beginning """
+        print_results(statusCodes, fileSize)
         raise
-    print_log()
