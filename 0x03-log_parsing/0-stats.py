@@ -2,7 +2,7 @@
 '''log parser algorithm'''
 
 
-import sys
+from sys import stdin
 
 
 mydict = {
@@ -14,24 +14,32 @@ mydict = {
     "404": 0,
     "405": 0,
     "500": 0}
-file_size = 0
-try:
-    for n, line in enumerate(sys.stdin, 1):
-        _line = line.split()
-        if len(_line) > 2:
-            status_code = _line[len(_line) - 2]
-            file_size += int(_line[len(_line) - 1])
-            if status_code in mydict:
-                mydict[str(status_code)] += 1
-        if n % 10 == 0:
-            print("File size: {}".format(file_size))
-            for k in sorted(mydict):
-                if mydict[k] > 0:
-                    print("{}: {}".format(k, mydict[k]))
-except KeyboardInterrupt:
-    pass
-finally:
-    print('File size: {}'.format(file_size))
-    for k in sorted(mydict):
-        if mydict[k] > 0:
-            print("{}: {}".format(k, mydict[k]))
+file = 0
+
+
+def print_log():
+    """Prints the logs"""
+    print("File size: {}".format(file))
+    for stat in sorted(status_codes.keys()):
+        if status_codes[stat]:
+            print("{}: {}".format(stat, status_codes[stat]))
+
+
+if __name__ == "__main__":
+    count = 1
+    try:
+        for line in stdin:
+            try:
+                log = line.split()
+                if log[-2] in status_codes:
+                    status_codes[log[-2]] += 1
+                file += int(log[-1])
+            except Exception:
+                pass
+            if count % 10 == 0:
+                print_log()
+            count += 1
+    except KeyboardInterrupt:
+        print_log()
+        raise
+    print_log()
